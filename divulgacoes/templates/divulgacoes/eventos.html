@@ -1,0 +1,72 @@
+<!-- aqui importo a base do site, com topo e rodapé !-->
+{% extends 'divulgacoes/base.html' %}
+
+<!-- importção necessária para poder puchar aquivos css e js !-->
+{% load staticfiles %}
+
+{% block estilo %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/detalhe_evento.css' %}" rel="stylesheet">
+{% endblock estilo %}
+
+{% block conteudo %}
+
+<!-- texto com fundo laranja !-->
+<section class="bg-escuro" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Fique por dentros das melhores festas da região</h2>
+                <hr class="light">
+                <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
+                <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Anuncie você também</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- lista de eventos !-->
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Próximas Festas</h2>
+                <hr class="primary">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row paddin_evento_top">
+            {% for evento in eventos %}
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <a href="{% url 'divulgacoes:detalhe_evento' pk=evento.pk %}"><img src="{{evento.thumbnail.url}}" class="img-responsive img_center" alt="Responsive image"></a>
+                        <h3><a href="{% url 'divulgacoes:detalhe_evento' pk=evento.pk %}">{{evento.title}}</h3></a>
+                        <p class="text-muted">{{evento.sub_title}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- paginação dos comercios !-->
+<section>
+    <div class="pagination col-md-12 col-xs-12">
+        <span class="step-links">
+            {% if eventos.has_previous %}
+                <a href="?page={{ eventos.previous_page_number }}"><i class="fa fa-arrow-left " aria-hidden="true"></i></a>
+            {% endif %}
+
+            <span class="current">
+                Pagina {{ eventos.number }} de {{ eventos.paginator.num_pages }}
+            </span>
+
+            {% if eventos.has_next %}
+                <a href="?page={{ evento.next_page_number }}"><i class="fa fa-arrow-right " aria-hidden="true"></i></a>
+            {% endif %}
+        </span>
+    </div>
+</section>
+
+{% endblock conteudo %}

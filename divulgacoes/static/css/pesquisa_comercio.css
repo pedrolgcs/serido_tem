@@ -1,0 +1,55 @@
+.navbar-default .nav > li > a,
+    .navbar-default .nav > li > a:focus {
+        color: #BE0D4C;
+    }
+.navbar-default .nav > li > a:hover,
+    .navbar-default .nav > li > a:focus:hover {
+        color: #F05F40;
+    }
+.navbar-default .navbar-header .navbar-brand {
+    color: #BE0D4C;
+}
+.navbar-default.affix .navbar-header .navbar-brand {
+    color: #D9A60F;
+    font-size: 14px;
+}
+.navbar-default .navbar-header .navbar-brand:hover,
+    .navbar-default .navbar-header .navbar-brand:focus {
+        color: #BE0D4C;
+}
+.bg-comercio{
+    background-color: #BE0D4C;
+    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+    color: white;
+}
+.btn-comercio{
+  color: white;
+  background-color: #D9A60F;
+  border-color: #F05F40;
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
+}
+.btn-comercio:hover,
+.btn-comercio:focus,
+.btn-comercio.focus,
+.btn-comercio:active,
+.btn-comercio.active,
+.open > .dropdown-toggle.btn-blue {
+  color: white;
+  background-color: #EEC23E;
+}
+.hr-comercio{
+    border-color: #D9A60F;
+    border-width: 3px;
+    max-width: 50px;
+}
+a{
+    color: #D9A60F;
+}
+a:hover{
+    color: #EEC23E;
+}
+.espaco_tags{
+    margin-top: 30px;
+}

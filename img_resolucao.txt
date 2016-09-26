@@ -1,0 +1,17 @@
+Resoluções das Imagens do site
+
+PAGINA INICIAL
+    Imagem_heard 1900 x 1270 (imagem da pagina inicial)
+    Imagem_cidade 400 x 300 (imagem da capa da cidade)
+    Imagem_thumbnail_festa 650 x 350 (imagem da festa na pagina inicial)
+    Imagem_banner_festa (variante)
+
+PAGINA NOTICIA
+    Imagen_post (tamanho variante)
+            
+PAGINA FESTAS
+    (mesmo tamanho definido na pagina inicial)
+
+PAGINA SOBRE
+    Imagem_pessoal 300 x 250 (imagem da gente)
+

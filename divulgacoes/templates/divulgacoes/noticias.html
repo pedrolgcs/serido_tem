@@ -1,0 +1,69 @@
+<!-- aqui importo a base do site, com topo e rodapé !-->
+{% extends 'divulgacoes/base.html' %}
+
+<!-- importção necessária para poder puchar aquivos css e js !-->
+{% load staticfiles %}
+
+{% block estilo %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/noticias.css' %}" rel="stylesheet">
+{% endblock estilo %}
+
+{% block conteudo %}
+
+<!-- texto com fundo laranja !-->
+<section class="bg-blue" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Útimas notícias</h2>
+                <hr class="light">
+                <p class="text-faded">Ultimas notícias em promoções, eventos e curiosidades para o seu dia a dia</p>
+                <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Fale conosco agora</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+        {% for noticia in noticias %}
+            <div class="col-sm-8 blog-main">
+                <div class="blog-post">
+                    <h2 class="blog-post-title"><a href="{% url 'divulgacoes:detalhe_noticia' pk=noticia.pk %}">{{noticia.title}}</a></h2> 
+                    <p class="blog-post-meta">{{noticia.published_date}} by <a href="#">{{noticia.author}}</a></p>
+                    {% if noticia.thumbnail %}
+                        <img src="{{noticia.thumbnail.url}}" class="img-responsive" alt="Responsive image">
+                        <br />
+                        {% else %}
+                            <p>{{noticia.text}}</p>
+                    {% endif %}
+                    <hr>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- paginação dos comercios !-->
+    <section>
+        <div class="pagination col-md-12 col-xs-12">
+            <span class="step-links">
+                {% if noticias.has_previous %}
+                    <a href="?page={{ noticias.previous_page_number }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                {% endif %}
+
+                <span class="current">
+                    Pagina {{ noticias.number }} de {{ noticias.paginator.num_pages }}
+                </span>
+
+                {% if noticias.has_next %}
+                    <a href="?page={{ noticias.next_page_number }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                {% endif %}
+            </span>
+        </div>
+    </section>
+
+{% endblock conteudo %}

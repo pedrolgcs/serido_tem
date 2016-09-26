@@ -1,0 +1,80 @@
+<!-- aqui importo a base do site, com topo e rodapé !-->
+{% extends 'divulgacoes/base.html' %}
+
+<!-- importção necessária para poder puchar aquivos css e js !-->
+{% load staticfiles %}
+
+{% block estilo %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pesquisa_comercio.css' %}" rel="stylesheet">
+{% endblock estilo %}
+
+{% block conteudo %}
+
+    <!-- texto top com nome e descricao da cidade !-->
+    <section class="bg-comercio" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    {% for cidade in nome_cidade %}
+                        <h2 class="section-heading">{{cidade.nome}}</h2>
+                        <hr class="light">
+                        <p class="text-faded">{{cidade.descricao}}</p>
+                    {% endfor %}
+                    <a href="{% url 'divulgacoes:index' %}" class="page-scroll btn btn-default btn-xl sr-button">Voltar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- topo e lista dos tipos de comercio !-->
+    <section id="cidades" class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Comercios da Cidade</h2>
+                    <hr class="hr-comercio">
+                </div>
+            </div>
+            <div class="lista_tipos_centro">
+                <a href="{% url 'divulgacoes:pesquisa_cidade' cidade=id_cidade %}"><button type="button" class="btn btn-comercio espaco_top_button">Todos</button></a>
+                {% for tag in tags %}
+                    <a href="{% url 'divulgacoes:pesquisa_tipo' cidade=id_cidade tag=tag.nome %}"><button type="button" class="btn btn-comercio espaco_top_button">{{tag.nome}}</button></a>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- lista de comercios que resultaram a partir da busca !-->
+        <div class="container">
+            <div class="row espaco_tags">
+                {% for comercio in comercios %}
+                    <div class="col-lg-3 col-md-6 col-xs-12 text-center">
+                        <div class="service-box">
+                            <a href="{% url 'divulgacoes:detalhe_comercio' pk=comercio.pk %}"><img src="{{comercio.logo.url}}" class="img-responsive img_center" alt="Responsive image"></a>
+                            <a href="{% url 'divulgacoes:detalhe_comercio' pk=comercio.pk %}"><h3>{{comercio.nome}}</h3></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- paginação dos comercios !-->
+    <section>
+        <div class="pagination col-md-12 col-xs-12">
+            <span class="step-links">
+                {% if comercios.has_previous %}
+                    <a href="?page={{ comercios.previous_page_number }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                {% endif %}
+
+                <span class="current">
+                    Pagina {{ comercios.number }} de {{ comercios.paginator.num_pages }}
+                </span>
+
+                {% if comercios.has_next %}
+                    <a href="?page={{ comercios.next_page_number }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                {% endif %}
+            </span>
+        </div>
+    </section>
+
+{% endblock conteudo %}

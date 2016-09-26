@@ -1,0 +1,52 @@
+<!-- aqui importo a base do site, com topo e rodapé !-->
+{% extends 'divulgacoes/base.html' %}
+
+<!-- importção necessária para poder puchar aquivos css e js !-->
+{% load staticfiles %}
+
+{% block estilo %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/detalhe_noticia.css' %}" rel="stylesheet">
+{% endblock estilo %}
+
+{% block conteudo %}
+
+<!-- texto com fundo laranja !-->
+<section class="bg-blue" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Útimas notícias</h2>
+                <hr class="light">
+                <p class="text-faded">Ultimas notícias em promoções, eventos e curiosidades para o seu dia a dia</p>
+                <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Fale conosco agora</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                <div class="blog-post">
+                    <h2 class="blog-post-title">{{noticia.title}}</h2> 
+                    <p class="blog-post-meta">{{noticia.published_date}} by <strong>{{noticia.author}}</strong></p>
+                    <blockquote>
+                    <p>{{noticia.text}}</p>
+                    </blockquote>
+                    {% if noticia.thumbnail %}
+                        <img src="{{noticia.thumbnail.url}}" class="img-responsive" alt="Responsive image">
+                        <br />
+                    {% endif %}
+                    {% if noticia.video %}
+                        <iframe width="560" height="315" src="{{noticia.video}}" frameborder="0" allowfullscreen></iframe>
+                    {% endif %}
+                    <hr class="hr-blue">
+                </div>
+            </div>        
+        </div>
+    </div>
+</section>
+
+{% endblock conteudo %}

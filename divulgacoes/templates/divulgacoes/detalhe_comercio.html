@@ -1,0 +1,189 @@
+<!-- aqui importo a base do site, com topo e rodapé !-->
+{% extends 'divulgacoes/base.html' %}
+
+<!-- importção necessária para poder puchar aquivos css e js !-->
+{% load staticfiles %}
+
+{% block estilo %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/detalhe_comercio.css' %}" rel="stylesheet">
+{% endblock estilo %}
+
+{% block conteudo %}
+
+    <!-- lista de serviços !-->
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">{{comercio.nome}}</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container padding_comercio_detail">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <img src="{{comercio.logo.url}}" class="img-responsive" alt="Responsive image">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-file-text-o text-primary fa-2x sr-icons" aria-hidden="true"></i>
+                        <h3>Sobre nos</h3>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-info no_radios" data-toggle="modal" data-target="#myModal">Leia
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">{{comercio.nome}}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{comercio.descricao}}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-motorcycle text-primary fa-2x sr-icons" aria-hidden="true"></i>
+                        <h3>Faz entrega?</h3>
+                        <p class="text-muted">{{comercio.faz_entrega}}</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-battery-three-quarters fa-2x text-primary sr-icons"></i>
+                        <h3>Funcionamento</h3>
+                        <p class="text-muted">{{comercio.funcionamento}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-3 text-center espaco_top_comercio">
+                    <div class="service-box">
+                        <i class="fa fa-mobile text-primary fa-2x sr-icons" aria-hidden="true"></i>
+                        <h3>Telefone</h3>
+                        <p class="text-muted">{{comercio.telefone}}</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 text-center espaco_top_comercio">
+                    <div class="service-box">
+                        <i class="fa fa-map-marker text-primary fa-2x sr-icons" aria-hidden="true"></i>
+                        <h3>Endereço</h3>
+                        <p class="text-muted">{{comercio.bairro}}</p>
+                        <p class="text-muted">{{comercio.rua}} º {{comercio.numero}}</p>
+                        <p class="text-muted">{{comercio.referencia}}</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 text-center espaco_top_comercio">
+                    <div class="service-box">
+                        <i class="fa fa-credit-card text-primary fa-2x sr-icons" aria-hidden="true"></i>
+                        <h3>Aceitamos cartão?</h3>
+                        {% if comercio.cartao %}
+                            <p class="text-muted">{{comercio.cartao}}</p>
+                            {% else %}
+                                <p class="text-muted">Nenhum no momento</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 text-center espaco_top_comercio">
+                    <div class="service-box">
+                        <i class="fa fa-hand-peace-o text-primary fa-2x sr-icons" aria-hidden="true"></i>
+                        <h3>Redes Social</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container-fluid espaco_top_comercio">
+                    <div class="row no-gutter popup-gallery">
+                        <!-- imagem do banner 1 !-->
+                        {% if comercio.banner1 %}
+                        <div class="col-md-3 text-center espaco_top_comercio">
+                            <a href="{{comercio.banner1.url}}" class="portfolio-box">
+                                <img src="{{comercio.banner1.url}}" class="img-responsive img-thumbnail" alt="">
+                                <div class="portfolio-box-caption">
+                                    <div class="portfolio-box-caption-content">
+                                        <div class="project-category text-faded">
+                                            {{comercio.nome}}
+                                        </div>
+                                        <div class="project-name">
+                                            {{evento.nome}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endif %}
+                        <!-- imagem do banner 2 !-->
+                        {% if comercio.banner2 %}
+                        <div class="col-md-3 text-center espaco_top_comercio">
+                            <a href="{{comercio.banner2.url}}" class="portfolio-box">
+                                <img src="{{comercio.banner2.url}}" class="img-responsive img-thumbnail" alt="">
+                                <div class="portfolio-box-caption">
+                                    <div class="portfolio-box-caption-content">
+                                        <div class="project-category text-faded">
+                                            {{comercio.nome}}
+                                        </div>
+                                        <div class="project-name">
+                                            {{evento.nome}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endif %}
+                        <!-- imagem do banner 3 !-->
+                        {% if comercio.banner3 %}
+                        <div class="col-md-3 col-xs-12 text-center espaco_top_comercio">
+                            <a href="{{comercio.banner1.url}}" class="portfolio-box padding_img">
+                                <img src="{{comercio.banner1.url}}" class="img-responsive" alt="">
+                                <div class="portfolio-box-caption">
+                                    <div class="portfolio-box-caption-content">
+                                        <div class="project-category text-faded">
+                                            {{comercio.nome}}
+                                        </div>
+                                        <div class="project-name">
+                                            {{evento.nome}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endif %}
+                        <!-- imagem do banner 4 !-->
+                        {% if comercio.banner4 %}
+                        <div class="col-md-3 col-xs-12 text-center espaco_top_comercio">
+                            <a href="{{comercio.banner1.url}}" class="portfolio-box padding_img">
+                                <img src="{{comercio.banner1.url}}" class="img-responsive" alt="">
+                                <div class="portfolio-box-caption">
+                                    <div class="portfolio-box-caption-content">
+                                        <div class="project-category text-faded">
+                                            {{comercio.nome}}
+                                        </div>
+                                        <div class="project-name">
+                                            {{evento.nome}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock conteudo %}

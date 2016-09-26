@@ -1,0 +1,55 @@
+.cor_fun_branco{
+    background: white;
+    border-color: rgba(255,255,255,.3);
+}
+.texto_escuro{
+    color: #222;
+}
+.navbar-default .nav > li > a,
+    .navbar-default .nav > li > a:focus {
+        color: #222;
+    }
+.navbar-default .nav > li > a:hover,
+    .navbar-default .nav > li > a:focus:hover {
+        color: #F05F40;
+    }
+.navbar-default .navbar-header .navbar-brand {
+    color: #F05F40;
+}
+.navbar-default .navbar-header .navbar-brand:hover,
+    .navbar-default .navbar-header .navbar-brand:focus {
+        color: #222;
+}
+.lista_tipos_centro{
+    padding-top: 10px;
+    text-align: center;
+}
+.paddin_comercios{
+    padding-top: 10px;
+}
+.padding_comercio_detail{
+    padding-top: 40px;
+}
+.espaco_top_comercio{
+    padding-top: 30px;
+}
+.pagination{
+    text-align: center;
+    font-size: 17px;
+}
+.espaco_top_button{
+    margin-top: 5px;
+}
+.padding_img{
+    padding: 10px;
+}
+.tamanho_img_lista{
+    height: 220px;
+    width: 100%;
+}
+.img_center{
+    vertical-align: middle;
+}
+.paddin_evento_top{
+    padding-top: 50px;
+}
