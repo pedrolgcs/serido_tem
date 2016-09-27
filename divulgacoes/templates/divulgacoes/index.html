@@ -17,7 +17,8 @@
                 <h1 id="homeHeading">Conectando o serido</h1>
                 <hr>
                 <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-                <form class="form-inline" action="{% url 'divulgacoes:pesquisa_form' %}">{% csrf_token %}
+                <form class="form-inline" action="{% url 'divulgacoes:pesquisa_form' %}">
+                {% csrf_token %}
                     <div class="form-group">
                         <input type="text" autofocus class="form-control" id="exampleInputEmail1" name="tag" placeholder="Comercio, Tipo, etc..">
                     </div>
@@ -48,9 +49,9 @@
                     <div class="col-lg-3 col-md-6 text-center">
                         <div class="service-box">
                             <a href="{% url 'divulgacoes:pesquisa_cidade' cidade=cidade.pk %}">
-                            <img src="{{cidade.thumbnail.url}}" class="img-responsive img-thumbnail" alt="Responsive image"></a>
+                            <img src="{{cidade.thumbnail.url}}" class="img-responsive img-thumbnail" alt="{{cidade.nome}}"></a>
                             <h3><a href="{% url 'divulgacoes:pesquisa_cidade' cidade=cidade.pk %}">{{cidade.nome}}</h3></a>
-                        </div>
+						</div>
                     </div>
                 {% endfor %}
             </div>
@@ -96,7 +97,7 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>Veja todas as festas da região!</h2>
+                <h2>Veja todas as festas e eventos região!</h2>
                 <a href="{% url 'divulgacoes:eventos' %}" class="btn btn-default btn-xl sr-button">Veja agora!</a>
             </div>
         </div>
