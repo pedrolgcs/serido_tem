@@ -28,6 +28,7 @@ SECRET_KEY = 'p=$scxpfvm2n%gtw*!ogyj@^#zk(m07+)_*3sr-9dqf9oc6v#d'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    
 ]
 
 
@@ -127,8 +128,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+# Static files (CSS, JavaScript, Images)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = '/opt/projectname/static/'
+
+STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

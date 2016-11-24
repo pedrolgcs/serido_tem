@@ -1,0 +1,150 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="{% static 'img/favicon.ico' %}" />
+        <title>error 404</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+        <!-- icones -->
+        <link href="{% static 'plugins/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    
+        <!-- Plugin CSS -->
+        <link href="{% static 'plugins/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="{% static 'css/base.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/404.css' %}" rel="stylesheet">
+
+    </head>
+    <body id="page-top">
+        <!-- Navigation -->
+        <nav class="navbar fundo-nav navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle toggle-menu" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span> <span class="menu-white">Menu </span><i class="fa fa-bars bars-white"></i>
+                    </button>
+                    <a class="navbar-brand page-scroll title-nav" href="{% url 'divulgacoes:index' %}"><span class="logo-cor1">Serido</span><span class="logo-cor2">Tem</span></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-right navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav font-nav">
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <li class="hidden">
+                            <a class="page-scroll" href="#page-top"></a>
+                        </li>
+                        <!-- 
+                        <li>
+                            <a class="page-scroll" href="#about">Notícias</a>
+                        </li>
+                        !-->
+                        <!--
+                        <li>
+                            <a class="page-scroll" href="#services">Festas</a>
+                        </li>
+                        !-->
+                        <li>
+                            <a class="page-scroll" href="#contact">Sobre</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+        
+        <section class="fundo-404">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 segura-404">
+                        <h1 class="title-404">
+                            Page 404
+                        </h1>
+                        <p class="sub-title-404">
+                            Desculpe, mas a página solicitada não pode ser encontrada, porfavor clike <a href="{% url 'divulgacoes:index' %}">AQUI </a>para voltar!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center">
+            <div class="footer-above">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-col col-md-4">
+                            <h3>Localização</h3>
+                            <p>40B José Francisco Barbalho
+                            <br>Centro, Acari-RN 59370-000</p>
+                        </div>
+                        <div class="footer-col col-md-4">
+                            <h3>Redes Sociais</h3>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="https://www.facebook.com/seridotem/" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-instagram"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer-col col-md-4">
+                            <h3>Sobre nós</h3>
+                            <p>Uma empresa jovem e dedicada a fornecer o melhor serviço para você cliente<a href="#"> Saiba mais</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-below">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            Copyright &copy; SERIDOTEM 2016
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- jQuery -->
+        <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+
+        <!-- plugin para abrir a img em modal !-->
+        <script src="{% static 'plugins/scrollreveal/scrollreveal.min.js' %}"></script>
+        
+        <!-- efeito menu !-->
+        <script src="{% static 'plugins/scrolling-nav/scrolling-nav.js' %}"></script>
+
+        <!-- magnific-popup JavaScript -->
+        <script src="{% static 'plugins/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+        <!-- Theme JavaScript -->
+        <script src="{% static 'js/creative.min.js' %}"></script>
+
+        {% block js %}
+
+        {% endblock %}
+    </body>
+</html>

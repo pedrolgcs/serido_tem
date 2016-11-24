@@ -1,8 +1,0 @@
-links de auxilio | https://www.digitalocean.com/community/tutorials/how-to-deploy-a-local-django-app-to-a-vps
-
-Servidor Debian 64 Digital Ocean
-
-tecnologias | Python 3x, Django 1.10, MySQL
-
-
-

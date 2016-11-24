@@ -33,7 +33,7 @@
                     <h2 class="blog-post-title">{{noticia.title}}</h2> 
                     <p class="blog-post-meta">{{noticia.published_date}} by <strong>{{noticia.author}}</strong></p>
                     <blockquote>
-                    <p>{{noticia.text}}</p>
+                    <p>{{noticia.text|linebreaksbr}}</p>
                     </blockquote>
                     {% if noticia.thumbnail %}
                         <img src="{{noticia.thumbnail.url}}" class="img-responsive" alt="Responsive image">

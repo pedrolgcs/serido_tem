@@ -1,17 +1,84 @@
-.no_radios{
-	border-radius: 5px;
+/* titulo do comercio */
+header{
+	background-image: url('../img/fundo/fundo3.gif');
+	font-family: 'Montserrat', sans-serif;
+	width: 100%;
+	font-weight:400;
 }
-.portfolio-box .portfolio-box-caption {
-  color: white;
-  opacity: 0;
-  display: block;
-  background: rgba(47, 114, 154, 0.9);
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  -webkit-transition: all 0.35s;
-  -moz-transition: all 0.35s;
-  transition: all 0.35s;
+.header-comercio{
+	padding-top: 90px;
+	text-align: center;
 }
+.segura-title{
+	padding: 40px;
+}
+.titulo-comercio{
+	font-size: 40px;
+	text-align: center;
+}
+.descricao-comercio{
+	font-size: 20px;
+    font-weight: 300;
+}
+
+@media(max-width:500px) {
+	.segura-title{
+		padding: 30px;
+	}
+    .titulo-comercio{
+		font-size: 30px;
+		text-align: center;
+	}
+}
+
+/* fim titulo do comercio */
+
+/* detalhes do comercio */
+.detalhe{
+	font-family: 'Montserrat', sans-serif;
+	background-image: url('../img/fundo/stripe.png');
+	padding: 30px;
+}
+.informacoes{
+	font-size: 18px;
+	text-align: left;
+}
+.informacoes p{
+	padding: 5px;
+}
+.det{
+	font-size: 20px;
+}
+
+.facebook{
+	color: #3b5998;
+}
+.facebook hover{
+	color: #4681c0;
+}
+.twitter{
+	color: #55acee;
+}
+.twitter hover{
+	color: #4e8fc0;
+}
+.instagram{
+	color:  #ab3aa8;
+}
+.instagram hover{
+	color: #fe4b52;
+}
+/* fim detalhes do comercio */
+
+/* portifolio */
+.logo{
+
+}
+.portifolio{
+	
+}
+.img-portifolio{
+	padding-top: 10px;
+	min-height: 140px;
+}
+/* fim portifolio */

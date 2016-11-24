@@ -1,129 +1,134 @@
-<!-- aqui importo a base do site, com topo e rodapé !-->
 {% extends 'divulgacoes/base.html' %}
+<!-- aqui importo a base do site, com topo e rodapé !-->
 
 <!-- importção necessária para poder puchar aquivos css e js !-->
 {% load staticfiles %}
-
+<!-- bloco de estilo da página !-->
 {% block estilo %}
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
 {% endblock estilo %}
-
+<!-- bloco de conteudo !-->
 {% block conteudo %}
 
-    <!-- banner top !-->
+    <!-- bloco header !-->
     <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <h1 id="homeHeading">Conectando o serido</h1>
-                <hr>
-                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-                <form class="form-inline" action="{% url 'divulgacoes:pesquisa_form' %}">
-                {% csrf_token %}
-                    <div class="form-group">
-                        <input type="text" autofocus class="form-control" id="exampleInputEmail1" name="tag" placeholder="Comercio, Tipo, etc..">
-                    </div>
-                    <select class="form-control" name="cidade">
-                        {% for cidade in cidades %}
-                            <option value="{{cidade.id}}">{{cidade.nome}}</option>
-                        {% endfor %}
-                    </select><br /><br />
-                    <button type="submit" class="btn btn-primary btn-xl page-scroll">Pesquise Agora</button>
-                </form>
-            </div>
-        </div>
-    </header>
-
-    <!-- lista de cidades !-->
-    <section id="cidades" class="fundo_img_bolinha">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Pesquisa por cidade</h2>
-                    <hr class="primary">
+                <div class="cabecalho">
+                    <div class="col-md-6 col-md-offset-3 col-xs-12 segura-titulo">
+                        <h1 class="titulo">Conectando o seridó</h1>
+                        <hr>
+                        <p class="sub-title">
+                            levando o melhor do seridó até você
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
+    </header>
+    <!-- fim bloco header !-->
+    
+    <!-- section pesquisa !-->
+    <section class="form-header">
+        <div class="container">
+            <div class="col-md-3">
+                <p>Encontre de forma rápida e fácil os comércios e serviços da região!</p>
+            </div>
+            <div class="col-md-9">
+                <form class="form-inline" action="{% url 'divulgacoes:pesquisa_index' %}">
+                    <!-- {% csrf_token %} !-->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-building-o" aria-hidden="true"></i></div>
+                            <input type="text" name="tag" class="form-control" id="exampleInputAmount" placeholder="comida, moda, beleza, etc..">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" name="cidade">
+                            {% for cidade in cidades %}
+                                <option value="{{cidade.id}}">{{cidade.nome}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-warning sr-button">Pesquise</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- fim section pesquisa !-->
+
+    <!-- section cidade  -->
+    <section class="cidades">
         <div class="container">
             <div class="row">
+                <h2 class="title-cidade">pesquisa por cidade</h2>
                 {% for cidade in cidades %}
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box">
-                            <a href="{% url 'divulgacoes:pesquisa_cidade' cidade=cidade.pk %}">
-                            <img src="{{cidade.thumbnail.url}}" class="img-responsive img-thumbnail" alt="{{cidade.nome}}"></a>
-                            <h3><a href="{% url 'divulgacoes:pesquisa_cidade' cidade=cidade.pk %}">{{cidade.nome}}</h3></a>
-						</div>
+                    <div class="col-md-3 lista-cidades">
+                        <a href="{% url 'divulgacoes:pesquisa_cidade' cidade=cidade.id %}"><img src="{{cidade.thumbnail.url}}" alt="..." class="img-rounded img-responsive center-block"></a>
+                        <p class="nome-cidade"><a href="{% url 'divulgacoes:pesquisa_cidade' cidade=cidade.id %}">{{cidade.nome}}</a></p>
                     </div>
                 {% endfor %}
             </div>
         </div>
     </section>
+    <!-- fim section cidade  -->
 
-    <!-- lista de eventos !-->
-    {% if eventos %}
-    <section class="no-padding fundo_img_bolinha" id="comercios">
+    <!-- section eventos -->
+    <section class="eventos">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Eventos mais próximos</h2>
-                    <hr class="primary">
-                </div>
+                <h2 class="title-evento">próximas festas</h2>
             </div>
         </div>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row no-gutter popup-gallery">
                 {% for evento in eventos %}
-                    <div class="col-lg-4 col-sm-6">
+                    <div class="col-lg-4 col-sm-6 lista-eventos">
                         <a href="{{evento.banner.url}}" class="portfolio-box">
-                            <img src="{{evento.thumbnail.url}}" class="img-responsive" alt="">
-                            <div class="portfolio-box-caption">
-                                <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        {{evento.sub_title}}
-                                    </div>
-                                    <div class="project-name">
-                                        {{evento.title}}
-                                    </div>
-                                </div>
-                            </div>
+                            <img src="{{evento.thumbnail.url}}" class="img-responsive center-block img-thumbnail" alt="">
                         </a>
                     </div>
                 {% endfor %}
             </div>
         </div>
     </section>
-    {% endif %}
+    <!-- fim section eventos -->
 
-    <!-- fundo preto da lista de eventos !-->
-    <aside class="bg-dark">
-        <div class="container text-center">
-            <div class="call-to-action">
-                <h2>Veja todas as festas e eventos região!</h2>
-                <a href="{% url 'divulgacoes:eventos' %}" class="btn btn-default btn-xl sr-button">Veja agora!</a>
+    <!-- section preto eventos -->
+    <section>
+        <div class="fundo-preto">
+            <div class="container">
+                <div class="col-md-12">
+                    <p class="titulo-fundo-preto">Veja todas as festas de uma forma rápida e fácil</p>
+                    <p class="titulo-fundo-preto"><a href="#" class="btn btn-danger btn-lg sr-button">Veja agora!</a>
+                    </p>
+                </div>
             </div>
-        </div>
-    </aside>
+        </div>    
+    </section>
+    <!-- section preto eventos -->
 
-    <!-- informações de contato !-->
-    <section id="contact">
+    <!-- Contact Section -->
+    <section class="contato">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Seja você um anunciador tambem!</h2>
-                    <hr class="primary">
-                    <p>Venha fazer parte do maior site de anuncios do sérido, encontre de maneira rápida e facil os estabelecientos, prestadores de serviços e festas na região.</p>
+                <h2 class="title-contato">Fale <i class="fa fa-heart heart-red sr-icons" aria-hidden="true"></i> Conosco</h2>
+                <p class="sub-title-contatp">Seja você também um anunciador!<br>fale conosco agora</p>
+                <div class="col-md-6 whatsapp">
+                    <i class="fa fa-whatsapp fa-4x sr-icons" aria-hidden="true"></i>
+                    <p class="num-whats"><a href="tel:84999308164">(84) 9 9930-8164</a></p>
                 </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
-                	<br>
-                    <i class="fa fa-whatsapp fa-3x sr-contact"></i>
-                    <p>123-456-6789</p>
+                <div class="col-md-6 mail">
+                    <i class="fa fa-envelope-o fa-4x sr-icons" aria-hidden="true"></i>
+                    <p class="text-mail"><a href="mailto:your-email@your-domain.com">seridotem@gmail.com</a></p>
                 </div>
-                <div class="col-lg-4 text-center">
-                	<br>
-                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-                    <p><a href="mailto:your-email@your-domain.com">seridotem@gmail.com</a></p>
-                </div>
+                <hr>
             </div>
         </div>
     </section>
 
 {% endblock conteudo %}
+
+{% block js %}
+
+{% endblock js %}

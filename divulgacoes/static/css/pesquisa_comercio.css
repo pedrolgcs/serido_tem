@@ -1,55 +1,94 @@
-.navbar-default .nav > li > a,
-    .navbar-default .nav > li > a:focus {
-        color: #BE0D4C;
-    }
-.navbar-default .nav > li > a:hover,
-    .navbar-default .nav > li > a:focus:hover {
-        color: #F05F40;
-    }
-.navbar-default .navbar-header .navbar-brand {
-    color: #BE0D4C;
+/* header */
+header{
+	font-family: 'Montserrat', sans-serif;
+	background-image: url('../img/fundo/stripe.png');
+	background-color: #4D82B9;
+	width: 100%;
+	font-weight:400;
+	color: white;
 }
-.navbar-default.affix .navbar-header .navbar-brand {
-    color: #D9A60F;
-    font-size: 14px;
+.detalhe-cidade{
+	padding-top: 90px;
+	text-align: center;
 }
-.navbar-default .navbar-header .navbar-brand:hover,
-    .navbar-default .navbar-header .navbar-brand:focus {
-        color: #BE0D4C;
+.segura-title{
+	padding: 40px;
 }
-.bg-comercio{
-    background-color: #BE0D4C;
-    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
-    color: white;
+.titulo-cidade{
+	font-size: 40px;
+	text-align: center;
 }
-.btn-comercio{
-  color: white;
-  background-color: #D9A60F;
-  border-color: #F05F40;
-  -webkit-transition: all 0.35s;
-  -moz-transition: all 0.35s;
-  transition: all 0.35s;
+.descricao-cidade{
+	font-size: 20px;
+    font-weight: 300;
 }
-.btn-comercio:hover,
-.btn-comercio:focus,
-.btn-comercio.focus,
-.btn-comercio:active,
-.btn-comercio.active,
-.open > .dropdown-toggle.btn-blue {
-  color: white;
-  background-color: #EEC23E;
+/* fim header */
+
+/* titulo e tags de busca */
+.title-tags{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 30px;
 }
-.hr-comercio{
-    border-color: #D9A60F;
-    border-width: 3px;
-    max-width: 50px;
+
+.form-header{
+	background-image: url(../img/fundo/stripe.png);
+	background-color: #2C3E50;
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	padding: 30px;
 }
-a{
-    color: #D9A60F;
+.form-header p{
+	font-size: 15px;
+	color: white;
+	text-align: justify;
+	font-weight:300;
 }
-a:hover{
-    color: #EEC23E;
+/* fim titulo e tags de busca */
+
+/* section lista de comercios */
+.comercios{
+	
 }
-.espaco_tags{
-    margin-top: 30px;
+.box-comercio{
+	font-family: 'Montserrat', sans-serif;
 }
+.box-comercio p{
+	text-align: center;
+	padding: 10px;
+	font-size: 20px;
+	min-height: 105px;
+}
+/* fim section lista de comercios */
+
+/* lista de tags lateral */
+
+.lista-tag{
+	
+}
+.nome-tag{
+	text-transform: uppercase;
+}
+/* fim lista de tags lateral */
+
+/* promocoes */
+.img-promocao{
+	padding-bottom: 5px;
+}
+
+/* fim promocoes */
+
+/* modal */
+.panel-body p{
+	color: #333;
+	text-align: left;
+	min-height: 2px;
+}
+/* */
+
+/* paginação */
+.paginacao{
+	text-align: center;
+	padding-bottom: 50px;
+	font-size: 20px;
+}
+/* fim paginação */
