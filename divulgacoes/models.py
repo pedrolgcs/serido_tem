@@ -113,8 +113,8 @@ class EventoManager(models.Manager):
         return Evento.objects.order_by('data').filter(Q(data__gte=timezone.now()))
 
 class Evento(models.Model):
-    title = models.CharField(max_length=200)
-    sub_title = models.CharField(max_length=200)
+    titulo = models.CharField(max_length=200)
+    sub_titulo = models.CharField(max_length=200)
     descricao = models.TextField()
     data = models.DateTimeField()
     local = models.CharField(max_length=400)
@@ -124,7 +124,7 @@ class Evento(models.Model):
     objects = EventoManager()
 
     def __str__(self):
-        return self.title
+        return self.titulo
 
 
 # POST
@@ -136,9 +136,9 @@ class PostManager(models.Manager):
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
-    title = models.CharField(max_length=200)
-    sub_title = models.CharField(max_length=200)
-    text = models.TextField()
+    titulo = models.CharField(max_length=200)
+    sub_titulo = models.CharField(max_length=200)
+    texto = models.TextField()
     thumbnail = models.ImageField(upload_to=upload_location_post,null=True, blank=True)
     video = models.CharField(max_length=1000, blank=True, null=True)
     published_date = models.DateTimeField(blank=True, null=True)
@@ -149,7 +149,7 @@ class Post(models.Model):
         self.save()
 
     def __str__(self):
-        return self.title
+        return self.titulo
 
 
 # PROMOCAO
@@ -160,7 +160,7 @@ class PromocaoManager(models.Manager):
 class Promocao(models.Model):
     comercio = models.ForeignKey(Comercio, null=True, blank=True)
     cidade = models.ForeignKey(Cidade, null=True, blank=True)
-    title = models.CharField(max_length=200)
+    titulo = models.CharField(max_length=200)
     descricao = models.TextField()
     validade = models.DateTimeField()
     published_date = models.DateTimeField(blank=True, null=True)
@@ -172,4 +172,4 @@ class Promocao(models.Model):
         self.save()
 
     def __str__(self):
-        return self.title
+        return self.titulo

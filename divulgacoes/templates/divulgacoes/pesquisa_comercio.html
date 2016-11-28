@@ -116,16 +116,16 @@
                                 <div class="img-promocao">
                                     <img src="{{promocao.banner.url}}" class="img-responsive center-block img-thumbnail" alt="Responsive image" 
                                     data-toggle="modal" 
-                                    data-target="#{{promocao.title|cut:" "}}">
+                                    data-target="#{{promocao.titulo|cut:" "}}">
                                 </div>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="{{promocao.title|cut:" "}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal fade" id="{{promocao.titulo|cut:" "}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">{{promocao.title}}</h4>
+                                                <h4 class="modal-title" id="myModalLabel">{{promocao.titulo}}</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <p class="promocao-descricao">{{promocao.descricao}}</p>
