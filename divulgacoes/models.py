@@ -29,13 +29,16 @@ class CidadeManager(models.Manager):
 
     # retorna todas as cidades cadastradas
     def list_cidade(self):
-         return Cidade.objects.all().order_by('nome')
+         return Cidade.objects.all()
 
 class Cidade(models.Model):
     nome = models.CharField(max_length=200)
     descricao = models.TextField(null=True)
     thumbnail = models.ImageField(upload_to=upload_location_cidade, null=True, blank=True)
     objects = CidadeManager()
+
+    class Meta:
+        ordering = ["nome"]
     
     def __str__(self):
         # return self.nome + "," + self.descricao[:20] + "..."
@@ -46,13 +49,16 @@ class Cidade(models.Model):
 class TagManager(models.Manager):
     # lista todas as tags
     def list_tags(self):
-         return Tag.objects.all().order_by('nome')
+         return Tag.objects.all()
 
 class Tag(models.Model):
     nome = models.CharField(max_length=100)
     descricao = models.TextField(null=True, blank=True)
     icone = models.ImageField(upload_to=upload_location_tag, null=True, blank=True)
     objects = TagManager()
+
+    class Meta:
+        ordering = ["nome"]
 
     def __str__(self):
         return self.nome
@@ -62,13 +68,13 @@ class Tag(models.Model):
 class ComercioManager(models.Manager):
     # query que traz as empresas do tipo e da cidade selecionada
     def list_comercios_tags(self, cidade, tag):
-        return Comercio.objects.all().filter((Q(nome__icontains=tag) | (Q(tags__icontains=tag))) & (Q(cidade_id=cidade))).order_by('nome')
+        return Comercio.objects.all().filter((Q(nome__icontains=tag) | (Q(tags__icontains=tag))) & (Q(cidade_id=cidade)))
 
     def list_pesquisa_comercio(self, nome, tag, cidade):
-        return Comercio.objects.all().filter(Q(cidade_id=cidade) & (Q(tags__icontains=nome)) & (Q(tags__icontains=tag))).order_by('nome')
+        return Comercio.objects.all().filter(Q(cidade_id=cidade) & (Q(tags__icontains=nome)) & (Q(tags__icontains=tag)))
         
     def list_comercios_cidade(self, cidade):
-        return Comercio.objects.all().filter(Q(cidade_id=cidade)).order_by('nome')
+        return Comercio.objects.all().filter(Q(cidade_id=cidade))
 
 class Comercio(models.Model):
     nome = models.CharField(max_length=200)
@@ -79,7 +85,7 @@ class Comercio(models.Model):
     cartao = models.CharField(max_length=100, null=True, blank=True)
     telefone = models.CharField(max_length=50, null=True, blank=True)
     telefone2 = models.CharField(max_length=50, null=True, blank=True)
-    cidade = models.ForeignKey(Cidade, on_delete=models.CASCADE, null=True)
+    cidade = models.ForeignKey(Cidade, on_delete=models.CASCADE)
     bairro = models.CharField(max_length=100, null=True, blank=True)
     rua = models.CharField(max_length=150, null=True, blank=True)
     numero = models.CharField(max_length=20, null=True, blank=True)
@@ -96,6 +102,9 @@ class Comercio(models.Model):
     banner5 = models.ImageField(upload_to=upload_location,null=True, blank=True)
     banner6 = models.ImageField(upload_to=upload_location,null=True, blank=True)
     objects = ComercioManager()
+
+    class Meta:
+        ordering = ["nome"]
 
     def __str__(self):
         return self.nome
@@ -143,6 +152,9 @@ class Post(models.Model):
     video = models.CharField(max_length=1000, blank=True, null=True)
     published_date = models.DateTimeField(blank=True, null=True)
     objects = PostManager()
+
+    class Meta:
+        ordering = ["-published_date"]
 
     def publish(self):
         self.published_date = timezone.now()

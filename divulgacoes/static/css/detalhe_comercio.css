@@ -41,13 +41,34 @@ header{
 }
 .informacoes{
 	font-size: 18px;
-	text-align: left;
+	text-align: center;
 }
 .informacoes p{
-	padding: 5px;
+	padding-top: 10px;
+	min-height: 100px;
+	
 }
+.informacoes img{
+	padding-top: 10px;
+}
+
+/* diminuir espaço caso abra em um celular */
+@media(max-width:500px) {
+	.informacoes p{
+		padding-top: 10px;
+		min-height: 0px;
+	}
+	.informacoes img{
+		padding-top: 20px;
+	}	
+}
+
 .det{
 	font-size: 20px;
+}
+
+.map{
+	padding-top: 20px;
 }
 
 .facebook{

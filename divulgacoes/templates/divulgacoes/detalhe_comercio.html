@@ -26,28 +26,31 @@
             <div class="container">
                 <!-- informações do comércio !-->
                 <div class="col-md-7 informacoes">
-
-                    <p>Funcionamento: <span class="det">{{comercio.funcionamento}}</span> <i class="fa fa-clock-o sr-icons"></i></p>
-
-                    <p>Telefone: <span class="det">{{comercio.telefone}}</span> || <span class="det"> {{comercio.telefone2}} <i class="fa fa-mobile sr-icons" aria-hidden="true"></i></span></p>
-
-                    <p>Cartão: <span class="det">{{comercio.cartao}}</span> <i class="fa fa-credit-card sr-icons" aria-hidden="true"></i></p>
-
-                    <p>Entrega: <span class="det">{{comercio.faz_entrega}}</span> <i class="fa fa-motorcycle sr-icons" aria-hidden="true"></i></p>
-                    
-                    <p>Bairro: <span class="det">{{comercio.bairro}}</span> <i class="fa fa-map-marker sr-icons" aria-hidden="true"></i></p>
-
-                    <p>Rua: <span class="det">{{comercio.rua}} nº{{comercio.numero}}</span> <i class="fa fa-map-marker sr-icons" aria-hidden="true"></i></p>
-
-                    <p>Referência: <span class="det">{{comercio.referencia}}</span> <i class="fa fa-map-marker sr-icons" aria-hidden="true"></i></p>
-                    
-                    {% if comercio.mapa %}
-                        <p>Mapa: <i class="fa fa-map-o sr-icons" aria-hidden="true"></i></p>
-                        <!-- frame de mapa do google !-->
-                        <iframe src="{{comercio.mapa}}" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
-                    {% endif %}
-
-                    <p>
+                    <div class="col-md-6">
+                        <img class=class="img-responsive center-block" alt="Responsive image" src="{% static 'img/icons/clock-48.png' %}" alt="funcionamento" data-toggle="tooltip" data-placement="top" title="Funcionamento">
+                        <p><span class="det">{{comercio.funcionamento}}</span></p>    
+                    </div>
+                    <div class="col-md-6">
+                        <img class=class="img-responsive center-block" alt="Responsive image" src="{% static 'img/icons/smartphone-48.png' %}" alt="telefone" data-toggle="tooltip" data-placement="top" title="Telefone">
+                        <p><span class="det">{{comercio.telefone}}</span> || <span class="det"> {{comercio.telefone2}} </span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <img class=class="img-responsive center-block" alt="Responsive image" src="{% static 'img/icons/credicard-48.png' %}" alt="cartao" data-toggle="tooltip" data-placement="top" title="Cartões">
+                        <p><span class="det">{{comercio.cartao}}</span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <img class=class="img-responsive center-block" alt="Responsive image" src="{% static 'img/icons/box-48.png' %}" alt="faz-entrega" data-toggle="tooltip" data-placement="top" title="Realiza Entrega">
+                        <p><span class="det">{{comercio.faz_entrega}}</span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <img class=class="img-responsive center-block" alt="Responsive image" src="{% static 'img/icons/map-48.png' %}" alt="endereco" data-toggle="tooltip" data-placement="top" title="Endereço">
+                        <p><span class="det">{{comercio.bairro}}<br>
+                        {{comercio.rua}}<br>
+                        {{comercio.referencia}}</span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <img class=class="img-responsive center-block" alt="Responsive image" src="{% static 'img/icons/like-48.png' %}" alt="social" data-toggle="tooltip" data-placement="top" title="Redes Sociais">
+                        <p>
                         {% if comercio.facebook %}
                             <a href="{{comercio.facebook}}" target="_blank"><i class="fa fa-facebook-official fa-2x facebook" aria-hidden="true"></i></a>
                         {% endif %}
@@ -58,6 +61,15 @@
                             <a href="{{comercio.instagram}}" target="_blank"><i class="fa fa-instagram fa-2x instagram" aria-hidden="true"></i></a>
                         {% endif %}
                     </p>
+                    </div>
+                    
+                    {% if comercio.mapa %}
+                        <div class="col-md-12">
+                            <img class=class="img-responsive center-block" alt="Responsive image" src="{% static 'img/icons/map-g-48.png' %}" alt="endereco" data-toggle="tooltip" data-placement="top" title="Mapa">
+                            <!-- frame de mapa do google !-->
+                            <iframe src="{{comercio.mapa}}" class="map" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                    {% endif %}
                 </div>
                 
                 <!-- imagens do comércio !-->

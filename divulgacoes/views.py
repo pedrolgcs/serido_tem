@@ -20,13 +20,15 @@ def index(request):
 
 # pagina sobre
 def sobre(request):
+
+    # passa o titulo
     context = {"title": "Sobre"}
     return render(request, 'divulgacoes/sobre.html', context)
 
 # pagina lista de festas
 def eventos(request):
 
-    # retorna a lista de todos os eventos válidos (que ainda nao aconteceram)
+    # retorna a lista de todos os eventos válidos (que ainda não aconteceram)
     eventos = Evento.objects.list_eventos()
 
     # paginacao
@@ -47,6 +49,7 @@ def eventos(request):
 # detalhe do evento
 def detalhe_evento(request, pk):
 
+    # pega o evento
     evento = get_object_or_404(Evento, pk=pk)
 
     context = {"title": evento.title, 'evento': evento}
