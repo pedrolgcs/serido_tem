@@ -52,7 +52,7 @@ def detalhe_evento(request, pk):
     # pega o evento
     evento = get_object_or_404(Evento, pk=pk)
 
-    context = {"title": evento.title, 'evento': evento}
+    context = {"title": evento.titulo, 'evento': evento}
 
     return render(request, 'divulgacoes/detalhe_evento.html', context)
 
@@ -86,7 +86,7 @@ def detalhe_noticia(request, pk):
     noticia = get_object_or_404(Post, pk=pk)
 
     # passa os valores apra a context
-    context = {"title": noticia.title, 'noticia': noticia}
+    context = {"title": noticia.titulo, 'noticia': noticia}
     
     return render(request, 'divulgacoes/detalhe_noticia.html', context)
 

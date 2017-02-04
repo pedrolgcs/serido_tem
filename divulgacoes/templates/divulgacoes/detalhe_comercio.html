@@ -32,7 +32,12 @@
                     </div>
                     <div class="col-md-6">
                         <img class=class="img-responsive center-block" alt="Responsive image" src="{% static 'img/icons/smartphone-48.png' %}" alt="telefone" data-toggle="tooltip" data-placement="top" title="Telefone">
-                        <p><span class="det">{{comercio.telefone}}</span> || <span class="det"> {{comercio.telefone2}} </span></p>
+                        <p><span class="det">{{comercio.telefone}}</span> 
+                        <!-- verifica se tem um segundo telefone !-->
+                        {% if comercio.telefone2 %}
+                            <br>
+                            <span class="det"> {{comercio.telefone2}} </span></p>
+                        {% endif %}
                     </div>
                     <div class="col-md-6">
                         <img class=class="img-responsive center-block" alt="Responsive image" src="{% static 'img/icons/credicard-48.png' %}" alt="cartao" data-toggle="tooltip" data-placement="top" title="Cartões">

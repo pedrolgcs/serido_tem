@@ -14,13 +14,13 @@ def upload_location(instance, filename):
     return "comercio/%s/%s" % (instance.nome, filename)
 
 def upload_location_evento(instance, filename):
-    return "evento/%s/%s" % (instance.title, filename)
+    return "evento/%s/%s" % (instance.titulo, filename)
 
 def upload_location_post(instance, filename):
-    return "post/%s/%s" % (instance.title, filename)
+    return "post/%s/%s" % (instance.titulo, filename)
 
 def upload_location_promocao(instance, filename):
-    return "promocao/%s/%s" % (instance.title, filename)
+    return "promocao/%s/%s" % (instance.titulo, filename)
 
 # Create your models here.
 
